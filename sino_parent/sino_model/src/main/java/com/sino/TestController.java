@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 @Controller
-public class Test {
+public class TestController {
 
 	
 	@Autowired
