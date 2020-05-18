@@ -22,7 +22,7 @@ import org.springframework.util.StreamUtils;
  */
 public class MixLoadBalancerInterceptor implements ClientHttpRequestInterceptor, PriorityOrdered {
  
-    @Value("${mix.loadbalancer.ip.regex:(((2[0-4]\\d|25[0-5]|[01]?\\d\\d?)\\.){3}(2[0-4]\\d|25[0-5]|[01]?\\d\\d?))}")
+    @Value("${mix.loadbalancer.ip.regex:(((2[0-4]\\d|25[0-5]|[01]?\\d\\d?)\\.){3}(2[0-4]\\d|25[0-5]|[01]?\\d\\d?)|localhost)}")
     private String ipRegex;
  
 //    @Value("${mix.loadbalancer.domain.regex:.*\\.(com|xyz|net|top|tech|org|gov|edu|pub|cn|biz|cc|tv|info|im)}")

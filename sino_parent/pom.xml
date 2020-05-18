@@ -105,10 +105,7 @@
 
 	<modules>
 		<module>sino_framework</module>
-		<module>sino_llb_center</module>
 		<module>sino_common</module>
-		<module>sino_order_storage</module>
-		<module>sino_ExtIterface</module>
 		<module>sino_gateway</module>
 		<module>sino_model</module>
 	</modules>
