@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.ibatis.session.Configuration;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -17,9 +18,17 @@ public class SortHandlerMethodArgumentResolver  implements SortArgumentResolver 
 	private String propertyDelimiter = ",";
 	private String sortParameter = "sort";
 	private String qualifierDelimiter = "_";
-	private boolean useCamelCaseMapping = true;
+	
+	//驼峰转换成下划线
+	private boolean underline2camel = false ;
 	
 	
+
+	public SortHandlerMethodArgumentResolver(boolean underline2camel) {
+		super();
+		this.underline2camel = underline2camel;
+		
+	}
 
 	@Override
 	public boolean supportsParameter(MethodParameter parameter) {
@@ -49,7 +58,9 @@ public class SortHandlerMethodArgumentResolver  implements SortArgumentResolver 
 	}
 	
 	List<OrderItem> parseParameterIntoSort(String[] source, String delimiter) {
-
+//		Configuration mybatisConfig = SpringUtil.getBean(org.apache.ibatis.session.Configuration.class);
+//		underline2camel = mybatisConfig.isMapUnderscoreToCamelCase();
+		
 		List<OrderItem> allOrders = new ArrayList<OrderItem>();
 		for (String part : source) {
 
@@ -57,10 +68,10 @@ public class SortHandlerMethodArgumentResolver  implements SortArgumentResolver 
 				continue;
 			}
 			String[] elements = part.split(delimiter);
-			if("desc".equals(elements[1])) {
-				allOrders.add(OrderItem.desc(this.underline2camel(elements[0], useCamelCaseMapping)));
-			}else if("asc".equals(elements[1])) {
-				allOrders.add(OrderItem.desc(this.underline2camel(elements[0], useCamelCaseMapping)));
+			if("desc".equalsIgnoreCase(elements[1])) {
+				allOrders.add(OrderItem.desc(this.underline2camel(elements[0], underline2camel)));
+			}else if("asc".equalsIgnoreCase(elements[1])) {
+				allOrders.add(OrderItem.asc(this.underline2camel(elements[0], underline2camel)));
 			}
 		}	
 		
@@ -69,6 +80,9 @@ public class SortHandlerMethodArgumentResolver  implements SortArgumentResolver 
 		return allOrders;
 	}
 	
+	/**
+	 * 驼峰转下划线
+	 */
 	private static Pattern humpPattern = Pattern.compile("[A-Z]");
 	public static String underline2camel(String str,boolean covert) {
 		if(!covert)return str;

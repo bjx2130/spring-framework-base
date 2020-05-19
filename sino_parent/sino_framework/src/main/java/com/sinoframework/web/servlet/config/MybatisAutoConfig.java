@@ -26,17 +26,18 @@ public class MybatisAutoConfig {
 	@Bean
 	public ConfigurationCustomizer mybatisConfigurationCustomizer(@Autowired MybatisProperties mybatisPro){
 		//
-		if(mybatisPro.getConfigLocation()==null) {
-			log.info("启用：mybatis 驼峰命名规则自动转换");
-			log.info("启用：mybatis MybatisMapWrapper包装类");
-			return (configuration)->{
-				configuration.setCallSettersOnNulls(true);
-				configuration.setJdbcTypeForNull(JdbcType.NULL);
-	        	configuration.setMapUnderscoreToCamelCase(true);//设置驼峰命名规则  
-	        	configuration.setObjectWrapperFactory(new MybatisMapWrapperFactory());
-			};
+		if(mybatisPro.getConfigLocation()!=null) {
+			return null;
 		}
-		return null;
+		
+		log.info("启用：mybatis 驼峰命名规则自动转换");
+		log.info("启用：mybatis MybatisMapWrapper包装类");
+		return (configuration)->{
+			configuration.setCallSettersOnNulls(true);
+			configuration.setJdbcTypeForNull(JdbcType.NULL);
+        	configuration.setMapUnderscoreToCamelCase(true);//设置驼峰命名规则  
+        	configuration.setObjectWrapperFactory(new MybatisMapWrapperFactory());
+		};
 	}
 	
 	

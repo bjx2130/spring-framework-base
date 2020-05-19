@@ -9,7 +9,6 @@ import java.util.Locale;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jackson.JacksonProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -120,13 +119,17 @@ public class ArgumentResolverAutoConfig  implements WebMvcConfigurer{
     }
     
     
+    
+    
+    
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
     	log.info("启用【ListStringArgumentResolver参数处理器 处理 【@RequestListParam List<String> idList】类型参数】");
     	resolvers.add(new ListStringArgumentResolver());
     	log.info("启用【ListIntegerArgumentResolver参数处理器 处理 【@RequestListParam List<Integer> idList】类型参数】");
     	resolvers.add(new ListIntegerArgumentResolver());
-    	log.info("启用【PageHandlerMethodArgumentResolver参数处理器 处理 【@RequestListParam List<Integer> idList】类型参数】");
+    	log.info("启用【SortArgumentResolver参数处理器 处理 【驼峰转换成下划线:默认false】类型参数】");
+    	log.info("启用【PageHandlerMethodArgumentResolver参数处理器 处理 【Page】类型参数】");
     	resolvers.add(new PageHandlerMethodArgumentResolver());
     	
 	}

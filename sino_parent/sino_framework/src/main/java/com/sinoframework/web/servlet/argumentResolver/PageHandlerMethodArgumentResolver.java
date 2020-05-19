@@ -57,7 +57,7 @@ public class PageHandlerMethodArgumentResolver implements HandlerMethodArgumentR
 	private String pageParameterName = DEFAULT_PAGE_PARAMETER;
 	private String sizeParameterName = DEFAULT_SIZE_PARAMETER;
 	
-	private SortArgumentResolver sortResolver = new SortHandlerMethodArgumentResolver();
+	private SortArgumentResolver sortResolver = new SortHandlerMethodArgumentResolver(true);
 	
 	private String prefix = DEFAULT_PREFIX;
 	private String qualifierDelimiter = DEFAULT_QUALIFIER_DELIMITER;
