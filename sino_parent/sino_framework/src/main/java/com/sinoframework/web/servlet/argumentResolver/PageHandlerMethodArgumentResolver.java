@@ -34,13 +34,21 @@ import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 /**
- * Extracts paging information from web requests and thus allows injecting {@link Pageable} instances into controller
- * methods. Request properties to be parsed can be configured. Default configuration uses request parameters beginning
- * with {@link #DEFAULT_PAGE_PARAMETER}{@link #DEFAULT_QUALIFIER_DELIMITER}.
+ * 测试分页地址 http://localhost:9091/page?page=0&size=10&sort=pdType,asc&sort=pdTitle,desc
+ * 											  size<0  不分页
  * 
- * @since 1.6
- * @author Oliver Gierke
- * @author Nick Williams
+ * 
+ * 参考SortHandlerMethodArgumentResolver源码实现。
+ * 	默认参数规则为 sort=name,DESC
+ * 	name： 表示要排序的字段名称
+ * 	DESC 、 ASC: 正序和倒序
+ * 	排序默认为ASC
+ * 	sort=name
+ * 	sort=name,DESC
+ * 	sort=name1,DESC&sort=name2 表示同时排序多个字段
+ * 
+ * @param page
+ * @return
  */
 public class PageHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
 	
@@ -51,7 +59,7 @@ public class PageHandlerMethodArgumentResolver implements HandlerMethodArgumentR
 	private static final String DEFAULT_PREFIX = "";
 	private static final String DEFAULT_QUALIFIER_DELIMITER = "_";
 	private static final int DEFAULT_MAX_PAGE_SIZE = 2000;
-	static final IPage DEFAULT_PAGE_REQUEST = new Page(0, 20);
+	static final IPage DEFAULT_PAGE_REQUEST = new Page(1, 20);
 
 	private IPage fallbackPageable = DEFAULT_PAGE_REQUEST;
 	private String pageParameterName = DEFAULT_PAGE_PARAMETER;
@@ -93,7 +101,7 @@ public class PageHandlerMethodArgumentResolver implements HandlerMethodArgumentR
 				: defaultOrFallback.getSize();
 
 		// Limit lower bound
-		pageSize = pageSize < 1 ? defaultOrFallback.getSize() : pageSize;
+//		pageSize = pageSize < 1 ? defaultOrFallback.getSize() : pageSize;
 		// Limit upper bound
 		pageSize = pageSize > maxPageSize ? maxPageSize : pageSize;
 		
@@ -127,10 +135,9 @@ public class PageHandlerMethodArgumentResolver implements HandlerMethodArgumentR
 	private int parseAndApplyBoundaries(String parameter, int upper, boolean shiftIndex) {
 
 		try {
-			int parsed = Integer.parseInt(parameter) - (oneIndexedParameters && shiftIndex ? 1 : 0);
-			return parsed < 0 ? 0 : parsed > upper ? upper : parsed;
+			return Integer.parseInt(parameter);
 		} catch (NumberFormatException e) {
-			return 0;
+			return -1;
 		}
 	}
 }

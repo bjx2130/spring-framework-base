@@ -36,7 +36,8 @@ public class TestController {
 	
 	
 	/**
-	 * 测试分页地址 http://localhost:9091/page?page=0&size=10&sort=pd_Type,desc&sort=pd_Title,desc
+	 * 测试分页地址 http://localhost:9091/page?page=0&size=10&sort=pdType,asc&sort=pdTitle,desc
+	 * 											  size<0  不分页
 	 * 
 	 * 
 	 * 参考SortHandlerMethodArgumentResolver源码实现。

@@ -57,11 +57,16 @@ public class SortHandlerMethodArgumentResolver  implements SortArgumentResolver 
 		return builder.append(sortParameter).toString();
 	}
 	
-	List<OrderItem> parseParameterIntoSort(String[] source, String delimiter) {
+	private List<OrderItem> parseParameterIntoSort(String[] source, String delimiter) {
 //		Configuration mybatisConfig = SpringUtil.getBean(org.apache.ibatis.session.Configuration.class);
 //		underline2camel = mybatisConfig.isMapUnderscoreToCamelCase();
 		
 		List<OrderItem> allOrders = new ArrayList<OrderItem>();
+		if(source==null) {
+			return allOrders;
+		}
+		
+		
 		for (String part : source) {
 
 			if (part == null) {
