@@ -21,7 +21,7 @@
     </appender>
 
     <logger name="com.sino" level="INFO"/>
-    <logger name="com.sino.llb.dao" level="DEBUG" />
+    <logger name="com.sino.dao" level="DEBUG" />
 	
     <root level="INFO">
 

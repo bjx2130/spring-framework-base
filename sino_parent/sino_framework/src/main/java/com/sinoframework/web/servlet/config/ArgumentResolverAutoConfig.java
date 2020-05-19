@@ -24,6 +24,7 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
 import com.sinoframework.web.servlet.argumentResolver.ListIntegerArgumentResolver;
 import com.sinoframework.web.servlet.argumentResolver.ListStringArgumentResolver;
+import com.sinoframework.web.servlet.argumentResolver.PageHandlerMethodArgumentResolver;
 
 /**
  * 接收参数处理器
@@ -125,6 +126,9 @@ public class ArgumentResolverAutoConfig  implements WebMvcConfigurer{
     	resolvers.add(new ListStringArgumentResolver());
     	log.info("启用【ListIntegerArgumentResolver参数处理器 处理 【@RequestListParam List<Integer> idList】类型参数】");
     	resolvers.add(new ListIntegerArgumentResolver());
+    	log.info("启用【PageHandlerMethodArgumentResolver参数处理器 处理 【@RequestListParam List<Integer> idList】类型参数】");
+    	resolvers.add(new PageHandlerMethodArgumentResolver());
+    	
 	}
     
     

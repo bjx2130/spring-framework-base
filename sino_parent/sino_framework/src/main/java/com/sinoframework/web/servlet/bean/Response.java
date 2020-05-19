@@ -9,9 +9,6 @@ package com.sinoframework.web.servlet.bean;
  **/
 public class Response {
  
-    private final static String SUCCESS = "success";
- 
-    private final static String FAIL = "fail";
  
     public static <T> ResponseResult<T> makeOKRsp() {
         return new ResponseResult<T>(ResultCode.SUCCESS);
