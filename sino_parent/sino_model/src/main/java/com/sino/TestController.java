@@ -1,5 +1,8 @@
 package com.sino;
 
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -10,12 +13,14 @@ import org.springframework.web.client.RestTemplate;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.google.common.util.concurrent.RateLimiter;
 import com.sino.dao.ProductDao;
 import com.sino.vo.Product;
 
 @Controller
 public class TestController {
-
+	
+	private static final Logger log = LogManager.getLogger();
 	
 	@Autowired
 	private RestTemplate restTemplate;
@@ -65,6 +70,23 @@ public class TestController {
 		page.addOrder(new OrderItem().ascs("pd_code"));
 		return productDao.selectPage(page, queryWrapper);
 	}
+	
+	
+	//每秒只发出5个令牌
+    RateLimiter rateLimiter = RateLimiter.create(2.0);
+    @ResponseBody
+	@RequestMapping(value="limiter")
+	public Object tateLimiter() {
+		
+		if(rateLimiter.tryAcquire()) {
+			log.info("aceess success ");
+		}else {
+			//log.info("aceess limit ");
+		}
+		return false;
+		
+	}
+	
 	
 	
 }

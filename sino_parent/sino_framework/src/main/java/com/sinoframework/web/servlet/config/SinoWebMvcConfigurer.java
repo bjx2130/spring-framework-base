@@ -22,6 +22,8 @@ public class SinoWebMvcConfigurer implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 		log.info("启用【ClearContextHolderInterceptor 】");
 		registry.addInterceptor(new ClearContextHolderInterceptor());
+		
+		
 	}
 
 
