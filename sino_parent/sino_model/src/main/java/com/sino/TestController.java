@@ -1,12 +1,15 @@
 package com.sino;
 
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
@@ -74,10 +77,10 @@ public class TestController {
 	
 	//每秒只发出5个令牌
     RateLimiter rateLimiter = RateLimiter.create(2.0);
+    
     @ResponseBody
-	@RequestMapping(value="limiter")
+	@RequestMapping(value="limiter",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public Object tateLimiter() {
-		
 		if(rateLimiter.tryAcquire()) {
 			log.info("aceess success ");
 		}else {
@@ -88,5 +91,12 @@ public class TestController {
 	}
 	
 	
-	
+    
+    @ResponseBody
+	@RequestMapping(value="list",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public Object list(List<String> ids,@RequestParam(required = false) List<Integer> idsint) {
+		log.info(ids);
+		log.info(idsint);
+		return false;
+	}	
 }
