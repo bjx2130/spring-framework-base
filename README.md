@@ -43,3 +43,5 @@
 ### sino_model 新建微服务demo模块【复制一个模块就可以】
 	包含了 MyBatis-Plus 一些测试方法
 	
+### sino_test【常用的框架集成demo】
+	
