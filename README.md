@@ -22,9 +22,8 @@
       参数处理器：@RequstParam LocalDateTime
                  @RequstParam LocalDate
                  @RequstParam LocalTime
-                 @RequestListParam List<String>
-                 @RequestListParam List<Integer>
-				 Page<Product> page [分页参数处理器]
+                 @RequstParam List<?>
+		 Page<Product> page [分页参数处理器]
      ObjectMapper类日期序列化模块：【jdk1.8 时间】序列化模块 SimpleModule
      全局返回值处理：ResponseControllerAdvice
      全局异常处理：SinoGlobalExceptionHandler
