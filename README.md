@@ -22,9 +22,8 @@
       参数处理器：@RequstParam LocalDateTime
                  @RequstParam LocalDate
                  @RequstParam LocalTime
-                 @RequestListParam List<String>
-                 @RequestListParam List<Integer>
-				 Page<Product> page [分页参数处理器]
+                 @RequstParam List<?>
+		 	Page<Product> page [分页参数处理器]
      ObjectMapper类日期序列化模块：【jdk1.8 时间】序列化模块 SimpleModule
      全局返回值处理：ResponseControllerAdvice
      全局异常处理：SinoGlobalExceptionHandler
@@ -42,4 +41,6 @@
 ### sino_gateway微服务网关
 ### sino_model 新建微服务demo模块【复制一个模块就可以】
 	包含了 MyBatis-Plus 一些测试方法
+	
+### sino_test【常用的框架集成demo】
 	
