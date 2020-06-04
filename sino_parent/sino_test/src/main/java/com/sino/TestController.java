@@ -32,7 +32,7 @@ public class TestController {
 		}else {
 			System.out.println("枷锁失败=====================");
 		}
-		return "";
+		return "测试完成";
 	}
 	
 	@ResponseBody

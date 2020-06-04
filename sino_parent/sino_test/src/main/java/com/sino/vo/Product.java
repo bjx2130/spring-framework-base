@@ -3,9 +3,11 @@ package com.sino.vo;
 import java.math.BigDecimal;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 
 
 public class Product {
+	@TableId
 	private int pdId;
 	private String pdTitle;
 	private String pdIntro;
