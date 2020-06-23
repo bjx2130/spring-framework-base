@@ -1,0 +1,13 @@
+#只能配置SingleServerConfig类的属性
+
+singleServerConfig:
+  address: "redis://127.0.0.1:6379"
+  database: 0
+  connectionMinimumIdleSize: 2
+  connectionPoolSize: 5
+  subscriptionConnectionMinimumIdleSize: 2
+  subscriptionConnectionPoolSize: 5
+threads: 0
+nettyThreads: 0
+codec: !<org.redisson.codec.JsonJacksonCodec> {}
+"transportMode": "NIO"

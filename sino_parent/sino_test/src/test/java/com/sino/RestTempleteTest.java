@@ -8,7 +8,6 @@ import org.springframework.web.client.RestTemplate;
 
 
 @SpringBootTest
-@AutoConfigureMockMvc
 class RestTempleteTest {
 	
 	@Autowired
@@ -16,7 +15,6 @@ class RestTempleteTest {
 	
 	@Test
 	void test() {
-		
 		
 		this.restTemplate.getForObject("http://test/aaa", String.class);
 	}
