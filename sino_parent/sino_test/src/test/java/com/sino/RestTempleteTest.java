@@ -13,6 +13,8 @@ class RestTempleteTest {
 	@Autowired
 	private RestTemplate restTemplate;
 	
+	
+	
 	@Test
 	void test() {
 		
