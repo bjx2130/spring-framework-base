@@ -21,6 +21,8 @@ class KafkaTest {
 	
 	@Test
 	void test() {
+		
+		
 		ListenableFuture<SendResult<String, Object>> sendFuture = kafkaTemplate.send("topic_1", "测试数据");
 		sendFuture.addCallback(
 				result->{
