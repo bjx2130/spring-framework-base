@@ -33,5 +33,5 @@ spring:
       # 在侦听器容器中运行的线程数。
       concurrency: 5
       #listner负责ack，每调用一次，就立即commit
-      ack-mode: manual_immediate
+      ack-mode: MANUAL_IMMEDIATE
       missing-topics-fatal: false
