@@ -1,0 +1,18 @@
+spring: 
+  profiles:
+     active: postgrel,dev
+  thymeleaf:
+    cache: false
+    
+    
+server:
+  port: 8888
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
+
+
+  
