@@ -114,6 +114,8 @@
 		<module>sino_common</module>
 		<module>sino_gateway</module>
 		<module>sino_model</module>
+		<module>sino_oauth2</module>
+		<module>sino_resource</module>
 	</modules>
 	
 </project>

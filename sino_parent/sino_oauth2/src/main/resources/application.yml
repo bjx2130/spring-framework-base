@@ -1,6 +1,6 @@
 spring: 
   profiles:
-     active: postgrel,dev
+     active: redis,postgrel,dev
   thymeleaf:
     cache: false
     

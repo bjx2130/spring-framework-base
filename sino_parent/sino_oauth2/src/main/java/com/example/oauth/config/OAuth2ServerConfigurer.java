@@ -2,26 +2,30 @@ package com.example.oauth.config;
 
 
 
-import javax.annotation.Resource;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
+import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
 
 
 @Configuration
 @EnableAuthorizationServer
 public class OAuth2ServerConfigurer extends AuthorizationServerConfigurerAdapter {
 	
-
+	@Autowired
+	private UserDetailsService userDetailsService;
 	
-	@Resource(name = "customClientDetailsService")
+	@Autowired
 	private ClientDetailsService clientDetailsService;
 	
-
+	@Autowired
+	private AuthorizationServerTokenServices defaultTokenServices;
 	
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -38,7 +42,22 @@ public class OAuth2ServerConfigurer extends AuthorizationServerConfigurerAdapter
 		clients.withClientDetails(clientDetailsService);
 		
 	}
-    
+
+	
+	/**
+	 * 
+	 */
+    @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        //配置认证管理器
+        endpoints
+                //配置用户服务
+                .userDetailsService(userDetailsService)
+                //配置token存储的服务与位置
+                .tokenServices(this.defaultTokenServices);
+    }
+	
+	
     
 	/**
 	 * =======可选配置=========

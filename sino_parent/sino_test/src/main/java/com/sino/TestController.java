@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sino.service.ProductService;
+
 @Controller
 public class TestController {
 	
@@ -35,11 +37,15 @@ public class TestController {
 		return "测试完成";
 	}
 	
+	
+	@Autowired
+	public ProductService productService;
+	
 	@ResponseBody
 	@RequestMapping(value="test2",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public String g2() throws Exception {
 		
-		return "";
+		return this.productService.hiHystrix("kkkkkkkkkkkkk");
 	}	
 	
 

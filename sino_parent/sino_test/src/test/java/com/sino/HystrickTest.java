@@ -18,7 +18,7 @@ class HystrickTest {
 	
 	@Test
 	void test() {
-		String a = this.productService.nohiHystrix("你好");
+		String a = this.productService.hiHystrix("你好");
 		log.info(a);
 	}
 
