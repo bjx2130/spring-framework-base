@@ -14,7 +14,7 @@ class OauthTest {
 	
 	@Test
 	void test() throws Exception {
-		String code = "2LB7fP";
+		String code = "QgqoNN";
 //		添加header: Authorization:Basic 编码(client:secret)
 		String authorization=String.format("Basic %s", Base64Utils.encodeToString("client:secret".getBytes()));
 		

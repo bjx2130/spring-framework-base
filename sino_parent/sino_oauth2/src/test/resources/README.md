@@ -1,3 +1,6 @@
+官方文档：https://docs.spring.io/spring-security/site/docs/5.0.7.BUILD-SNAPSHOT/reference/htmlsingle/
+
+
 1.GET请求：http://localhost:8888/oauth/authorize?client_id=client&response_type=code&redirect_uri=http://www.baidu.com
 			重定向：https://www.baidu.com/?code=YICO47	
 		

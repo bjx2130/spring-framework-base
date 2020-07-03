@@ -1,7 +1,28 @@
 server:
  port: 9999
+ servlet: 
+   context-path: /resource
 
+#security:
+# oauth2:
+#   resource: 
+#     filter-order: 3
+
+# 认证服务器地址
+auth-server: http://localhost:8888
 security:
- oauth2:
-   resource: 
-     filter-order: 3
+  oauth2:
+    client:
+      client-id: client1
+      client-secret: secret
+      scope: all
+      access-token-uri: ${auth-server}/oauth/token
+      user-authorization-uri: ${auth-server}/oauth/authorize
+    resource:
+      token-info-uri: ${auth-server}/oauth/check_token
+      
+      
+sino:
+  responseControllerAdvice:
+     enabled: false      
+

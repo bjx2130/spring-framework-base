@@ -3,12 +3,14 @@ package com.resource.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
+
 
 @Configuration
 public class SpringSecutityBeanConfiguration {
@@ -49,6 +51,7 @@ public class SpringSecutityBeanConfiguration {
      * @return
      */
     @Bean
+    @Primary
     public ResourceServerTokenServices tokenService() {
         DefaultTokenServices tokenServices = new DefaultTokenServices();
         //配置token存储
