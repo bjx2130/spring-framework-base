@@ -9,6 +9,11 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
 
+/**
+ * 资源服务器
+ * @author Administrator
+ *
+ */
 @Configuration
 @EnableResourceServer
 public class ResServerConfig extends ResourceServerConfigurerAdapter {

@@ -13,4 +13,4 @@
  				    "scope": "app"
  				}
  				
-3.请求资源服务器：http://resource:port/hello?access_token=7989cf2d-331e-4e74-80c8-506b01cd4d5f 				
+3.请求资源服务器：http://resource:port/hello?access_token=167de16c-826f-4f90-a419-e92d3e42dc3a 				

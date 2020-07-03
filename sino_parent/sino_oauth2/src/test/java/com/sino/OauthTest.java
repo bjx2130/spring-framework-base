@@ -14,13 +14,13 @@ class OauthTest {
 	
 	@Test
 	void test() throws Exception {
-		String code = "QgqoNN";
+		String code = "1fxGfx";
 //		添加header: Authorization:Basic 编码(client:secret)
 		String authorization=String.format("Basic %s", Base64Utils.encodeToString("client:secret".getBytes()));
 		
 		
 		
-		String url = String.format("http://localhost:8888/oauth/token?code=%s&grant_type=authorization_code&redirect_uri=http://www.baidu.com&scope=app"
+		String url = String.format("http://localhost:8888/oauth/token?code=%s&grant_type=authorization_code&redirect_uri=http://localhost:9999/resource/login&scope=app"
 								,code);
 		
 		FormBody formboby=new FormBody.Builder()

@@ -12,7 +12,7 @@
  Target Server Version : 100001
  File Encoding         : 65001
 
- Date: 01/07/2020 16:09:49
+ Date: 03/07/2020 16:12:32
 */
 
 
@@ -219,35 +219,6 @@ CREATE TABLE "public"."oauth2_authorized_client" (
 ;
 
 -- ----------------------------
--- Table structure for oauth_access_token
--- ----------------------------
-DROP TABLE IF EXISTS "public"."oauth_access_token";
-CREATE TABLE "public"."oauth_access_token" (
-  "token_id" varchar(256) COLLATE "pg_catalog"."default",
-  "token" text COLLATE "pg_catalog"."default",
-  "authentication_id" varchar(256) COLLATE "pg_catalog"."default" NOT NULL,
-  "user_name" varchar(256) COLLATE "pg_catalog"."default",
-  "client_id" varchar(256) COLLATE "pg_catalog"."default",
-  "authentication" text COLLATE "pg_catalog"."default",
-  "refresh_token" varchar(256) COLLATE "pg_catalog"."default"
-)
-;
-
--- ----------------------------
--- Table structure for oauth_approvals
--- ----------------------------
-DROP TABLE IF EXISTS "public"."oauth_approvals";
-CREATE TABLE "public"."oauth_approvals" (
-  "userid" varchar(256) COLLATE "pg_catalog"."default",
-  "clientid" varchar(256) COLLATE "pg_catalog"."default",
-  "scope" varchar(256) COLLATE "pg_catalog"."default",
-  "status" varchar(10) COLLATE "pg_catalog"."default",
-  "expiresat" timestamp(6),
-  "lastmodifiedat" timestamp(6)
-)
-;
-
--- ----------------------------
 -- Table structure for oauth_client_details
 -- ----------------------------
 DROP TABLE IF EXISTS "public"."oauth_client_details";
@@ -269,41 +240,8 @@ CREATE TABLE "public"."oauth_client_details" (
 -- ----------------------------
 -- Records of oauth_client_details
 -- ----------------------------
-INSERT INTO "public"."oauth_client_details" VALUES ('client', NULL, '$2a$10$eJPylJH5RaA47FIGUlyT9OVIy1NvC9l8t377vDgMGkxHsYtnsIVLy', 'app', 'authorization_code', 'http://www.baidu.com', 'ROLE_USER', NULL, NULL, NULL, 'false');
-
--- ----------------------------
--- Table structure for oauth_client_token
--- ----------------------------
-DROP TABLE IF EXISTS "public"."oauth_client_token";
-CREATE TABLE "public"."oauth_client_token" (
-  "token_id" varchar(256) COLLATE "pg_catalog"."default",
-  "token" text COLLATE "pg_catalog"."default",
-  "authentication_id" varchar(256) COLLATE "pg_catalog"."default" NOT NULL,
-  "user_name" varchar(256) COLLATE "pg_catalog"."default",
-  "client_id" varchar(256) COLLATE "pg_catalog"."default"
-)
-;
-
--- ----------------------------
--- Table structure for oauth_code
--- ----------------------------
-DROP TABLE IF EXISTS "public"."oauth_code";
-CREATE TABLE "public"."oauth_code" (
-  "code" varchar(256) COLLATE "pg_catalog"."default",
-  "authentication" text COLLATE "pg_catalog"."default"
-)
-;
-
--- ----------------------------
--- Table structure for oauth_refresh_token
--- ----------------------------
-DROP TABLE IF EXISTS "public"."oauth_refresh_token";
-CREATE TABLE "public"."oauth_refresh_token" (
-  "token_id" varchar(256) COLLATE "pg_catalog"."default",
-  "token" text COLLATE "pg_catalog"."default",
-  "authentication" text COLLATE "pg_catalog"."default"
-)
-;
+INSERT INTO "public"."oauth_client_details" VALUES ('client', NULL, '$2a$10$eJPylJH5RaA47FIGUlyT9OVIy1NvC9l8t377vDgMGkxHsYtnsIVLy', 'app', 'authorization_code', 'http://localhost:9999/resource/login', 'ROLE_USER', NULL, NULL, NULL, 'false');
+INSERT INTO "public"."oauth_client_details" VALUES ('sso', NULL, '$2a$10$eJPylJH5RaA47FIGUlyT9OVIy1NvC9l8t377vDgMGkxHsYtnsIVLy', 'all', 'authorization_code', 'http://localhost:9999/resource/login', 'ROLE_USER', NULL, NULL, NULL, 'true');
 
 -- ----------------------------
 -- Table structure for persistent_logins
@@ -438,19 +376,9 @@ ALTER TABLE "public"."groups" ADD CONSTRAINT "groups_pkey" PRIMARY KEY ("id");
 ALTER TABLE "public"."oauth2_authorized_client" ADD CONSTRAINT "oauth2_authorized_client_pkey" PRIMARY KEY ("client_registration_id", "principal_name");
 
 -- ----------------------------
--- Primary Key structure for table oauth_access_token
--- ----------------------------
-ALTER TABLE "public"."oauth_access_token" ADD CONSTRAINT "oauth_access_token_pkey" PRIMARY KEY ("authentication_id");
-
--- ----------------------------
 -- Primary Key structure for table oauth_client_details
 -- ----------------------------
 ALTER TABLE "public"."oauth_client_details" ADD CONSTRAINT "oauth_client_details_pkey" PRIMARY KEY ("client_id");
-
--- ----------------------------
--- Primary Key structure for table oauth_client_token
--- ----------------------------
-ALTER TABLE "public"."oauth_client_token" ADD CONSTRAINT "oauth_client_token_pkey" PRIMARY KEY ("authentication_id");
 
 -- ----------------------------
 -- Primary Key structure for table persistent_logins
