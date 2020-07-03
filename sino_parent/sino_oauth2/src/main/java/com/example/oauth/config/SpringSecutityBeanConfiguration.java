@@ -92,8 +92,8 @@ public class SpringSecutityBeanConfiguration {
         tokenServices.setSupportRefreshToken(true);
         //复用refresh_token
         tokenServices.setReuseRefreshToken(true);
-        //token有效期，设置12小时
-        tokenServices.setAccessTokenValiditySeconds(12 * 60 * 60);
+        //token有效期，设置1小时
+        tokenServices.setAccessTokenValiditySeconds(1 * 60 * 60);
         //refresh_token有效期，设置一周
         tokenServices.setRefreshTokenValiditySeconds(7 * 24 * 60 * 60);
         return tokenServices;

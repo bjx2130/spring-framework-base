@@ -6,6 +6,7 @@ import org.mybatis.spring.boot.autoconfigure.MybatisProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -24,6 +25,7 @@ public class MybatisAutoConfig {
 	 * @return
 	 */
 	@Bean
+	@ConditionalOnProperty(prefix = "sino.mybatisConfigurationCustomizer", value = "enabled", matchIfMissing = true)
 	public ConfigurationCustomizer mybatisConfigurationCustomizer(@Autowired MybatisProperties mybatisPro){
 		//
 		if(mybatisPro.getConfigLocation()!=null) {
@@ -46,6 +48,7 @@ public class MybatisAutoConfig {
 	 * @return
 	 */
 	@Bean
+	@ConditionalOnProperty(prefix = "sino.paginationInterceptor", value = "enabled", matchIfMissing = true)
     public PaginationInterceptor paginationInterceptor() {
 		log.info("启用：MyBatis-Plus 分页插件");
         PaginationInterceptor paginationInterceptor = new PaginationInterceptor();

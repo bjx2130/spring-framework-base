@@ -28,8 +28,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  * @author Administrator
  *
  */
-//@Configuration
-//@EnableOAuth2Sso
+@Configuration
+@EnableOAuth2Sso
 public class SsoOauth2Config  extends WebSecurityConfigurerAdapter {
 
     @Override
