@@ -8,6 +8,15 @@ spring:
 server:
   port: 8888
 
+sino:
+  responseControllerAdvice:
+      enabled: false
+  mybatisConfigurationCustomizer:
+      enabled: false
+  paginationInterceptor: 
+      enabled: false     
+
+
 logging:
   level:
     root: INFO
