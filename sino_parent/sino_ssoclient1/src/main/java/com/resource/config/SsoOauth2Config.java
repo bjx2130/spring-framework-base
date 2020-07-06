@@ -46,7 +46,7 @@ public class SsoOauth2Config  extends WebSecurityConfigurerAdapter {
 //                            response.sendRedirect(oauthHost.split("oauth")[0] + "logout?callback=http://" + request.getHeader("Host"));
 //                        })
 //                )
-                .logoutSuccessUrl("http://localhost:8081/auth/oauth/exit")
+                .logoutSuccessUrl("http://localhost:8888/auth/oauth/exit")
                 .and().cors().and().csrf().disable();
         		
     }

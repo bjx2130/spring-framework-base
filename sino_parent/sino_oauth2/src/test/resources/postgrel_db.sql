@@ -240,8 +240,11 @@ CREATE TABLE "public"."oauth_client_details" (
 -- ----------------------------
 -- Records of oauth_client_details
 -- ----------------------------
-INSERT INTO "public"."oauth_client_details" VALUES ('client', NULL, '$2a$10$eJPylJH5RaA47FIGUlyT9OVIy1NvC9l8t377vDgMGkxHsYtnsIVLy', 'app', 'authorization_code', 'http://localhost:9999/resource/login', 'ROLE_USER', NULL, NULL, NULL, 'false');
-INSERT INTO "public"."oauth_client_details" VALUES ('sso', NULL, '$2a$10$eJPylJH5RaA47FIGUlyT9OVIy1NvC9l8t377vDgMGkxHsYtnsIVLy', 'all', 'authorization_code', 'http://localhost:9999/resource/login', 'ROLE_USER', NULL, NULL, NULL, 'true');
+INSERT INTO "oauth_client_details"("resource_ids", "client_secret", "scope", "authorized_grant_types", "web_server_redirect_uri", "authorities", "access_token_validity", "refresh_token_validity", "additional_information", "autoapprove") VALUES ('client', NULL, '$2a$10$eJPylJH5RaA47FIGUlyT9OVIy1NvC9l8t377vDgMGkxHsYtnsIVLy', 'app', 'authorization_code', 'http://localhost:9999/resource/login', ROLE_USER, NULL, NULL, NULL);
+INSERT INTO "oauth_client_details"("resource_ids", "client_secret", "scope", "authorized_grant_types", "web_server_redirect_uri", "authorities", "access_token_validity", "refresh_token_validity", "additional_information", "autoapprove") VALUES ('sso', NULL, '$2a$10$eJPylJH5RaA47FIGUlyT9OVIy1NvC9l8t377vDgMGkxHsYtnsIVLy', 'all', 'authorization_code', 'http://localhost:9999/resource/login', ROLE_USER, NULL, NULL, NULL);
+INSERT INTO "oauth_client_details"("resource_ids", "client_secret", "scope", "authorized_grant_types", "web_server_redirect_uri", "authorities", "access_token_validity", "refresh_token_validity", "additional_information", "autoapprove") VALUES ('ssoclient1', NULL, '$2a$10$eJPylJH5RaA47FIGUlyT9OVIy1NvC9l8t377vDgMGkxHsYtnsIVLy', 'all', 'authorization_code', 'http://localhost:9991/ssoclient1/login', ROLE_USER, NULL, NULL, NULL);
+INSERT INTO "oauth_client_details"("resource_ids", "client_secret", "scope", "authorized_grant_types", "web_server_redirect_uri", "authorities", "access_token_validity", "refresh_token_validity", "additional_information", "autoapprove") VALUES ('ssoclient2', NULL, '$2a$10$eJPylJH5RaA47FIGUlyT9OVIy1NvC9l8t377vDgMGkxHsYtnsIVLy', 'all', 'authorization_code', 'http://localhost:9992/ssoclient2/login', ROLE_USER, NULL, NULL, NULL);
+
 
 -- ----------------------------
 -- Table structure for persistent_logins
