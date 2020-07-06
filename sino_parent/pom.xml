@@ -21,43 +21,45 @@
 	</properties>
 
 	<dependencies>
-	
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-config</artifactId>
-		</dependency>
+		
+		<!-- 熔断器 -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
 		</dependency>
+		
+		<!-- 微服务客户端 -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
 		</dependency>
-		
-		<dependency>
-		    <groupId>org.springframework.cloud</groupId>
-		    <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-		</dependency>
-		
 		<dependency>
 		    <groupId>org.springframework.cloud</groupId>
 		    <artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
 		
+		<!-- 认证授权框架 -->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-
-		</dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
+        </dependency>
 		
+		
+		<!-- 注册中心，配置中心 -->
 		<dependency>
 			<groupId>com.alibaba.cloud</groupId>
     		<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
     		<version>${spring-cloud-alibaba.version}</version>
 		</dependency>
-		
+		<!-- 配置中心 -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
@@ -88,6 +90,13 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
+		</dependency>
+		
+		<!-- 测试框架 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
