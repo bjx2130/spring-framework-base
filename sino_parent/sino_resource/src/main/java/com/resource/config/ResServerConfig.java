@@ -42,7 +42,14 @@ public class ResServerConfig extends ResourceServerConfigurerAdapter {
 		resources.tokenServices(tokenServices)
 			.stateless(true);;
 	}
-
+	
+	/**
+	 * 使用spring security 我们可以准确控制session何时创建以及Spring Security如何与之交互：
+		always – a session will always be created if one doesn’t already exist，没有session就创建。
+		ifRequired – a session will be created only if required (default)，如果需要就创建（默认）。
+		never – the framework will never create a session itself but it will use one if it already exists
+		stateless – no session will be created or used by Spring Security 不创建不使用session
+	 */
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		/*
@@ -61,7 +68,7 @@ public class ResServerConfig extends ResourceServerConfigurerAdapter {
 				// need
 				// session creation to be allowed (it's disabled by default in 2.0.6)
 				// 另外，如果不设置，那么在通过浏览器访问被保护的任何资源时，每次是不同的SessionID，并且将每次请求的历史都记录在OAuth2Authentication的details的中
-				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
+				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 				.and().requestMatchers().antMatchers("/user", "/res/**")
 				.and().authorizeRequests().antMatchers("/user", "/res/**").authenticated();
 	}
