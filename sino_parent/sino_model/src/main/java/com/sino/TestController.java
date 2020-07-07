@@ -93,7 +93,7 @@ public class TestController {
 	
     
     @ResponseBody
-	@RequestMapping(value="list",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@RequestMapping(value="list",produces = MediaType.APPLICATION_JSON_UTF8_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Object list(List<String> ids,@RequestParam(required = false) List<Integer> idsint) {
 		log.info(ids);
 		log.info(idsint);

@@ -9,18 +9,18 @@ server:
 #     filter-order: 3
 
 # 认证服务器地址
-auth-server: http://localhost:8888
-# SSO客户端配置
-security:
-  oauth2:
-    client:
-      client-id: sso #用户名错误报错【error="invalid_client", error_description="Bad client credentials"】
-      client-secret: secret #密码错误【There was an unexpected error (type=Unauthorized, status=401).】或【There was an unexpected error (type=Internal Server Error, status=500).】
-      scope: all
-      access-token-uri: ${auth-server}/oauth/token
-      user-authorization-uri: ${auth-server}/oauth/authorize
-    resource:
-      token-info-uri: ${auth-server}/oauth/check_token
+#auth-server: http://localhost:8888
+## SSO客户端配置
+#security:
+#  oauth2:
+#    client:
+#      client-id: sso #用户名错误报错【error="invalid_client", error_description="Bad client credentials"】
+#      client-secret: secret #密码错误【There was an unexpected error (type=Unauthorized, status=401).】或【There was an unexpected error (type=Internal Server Error, status=500).】
+#      scope: all
+#      access-token-uri: ${auth-server}/oauth/token
+#      user-authorization-uri: ${auth-server}/oauth/authorize
+#    resource:
+#      token-info-uri: ${auth-server}/oauth/check_token
       
       
 sino:

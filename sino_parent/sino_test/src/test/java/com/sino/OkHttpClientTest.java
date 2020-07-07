@@ -37,7 +37,28 @@ class OkHttpClientTest {
 	}
 	
 	
-	
+	@Test
+	void exit() throws Exception {
+		String url = String.format("http://localhost:8888/oauth/token");
+		
+		
+		
+		FormBody formboby=new FormBody.Builder()
+				.add("access_token", "4d97fa92-9e7b-4391-a100-293314d07fe2")
+				   .build();
+		
+//		MediaType JSON = MediaType.get("application/json; charset=utf-8");
+//		RequestBody body = RequestBody.create(jsonStr, JSON);
+		
+		
+		
+		Response response =	client.newCall(new Request.Builder()
+				.url(url)
+				.delete(formboby)
+				.build()
+			).execute();
+		System.out.println(response.body().string());
+	}
 	
 	
 }

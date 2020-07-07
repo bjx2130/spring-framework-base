@@ -25,4 +25,7 @@ public class GlobalAutoConfig {
 		return new SinoGlobalExceptionHandler();
 	}
 	
+	
+	
+	
 }

@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 @AutoConfigureMockMvc
 class PlugTest {
-	
+//	WebSecurityConfigurerAdapter
 //	 @Autowired
 //	 private BlorderDao blorderDao;
 //	
